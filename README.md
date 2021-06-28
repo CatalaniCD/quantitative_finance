@@ -37,15 +37,3 @@ Financial engineering is a multidisciplinary field involving financial theory,
 methods of engineering, tools of mathematics and the practice of programming.
 
 Source : https://en.m.wikipedia.org/wiki/Financial_engineering#/search
-
-# Branches
-
-# Risk Management
-# Algorithmic Trading
-# Quantitative Investing
-
-
-
-
-This is a repository about simple quant solutions for
-discretional trading and algorithmic trading
