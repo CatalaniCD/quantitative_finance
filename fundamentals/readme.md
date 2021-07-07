@@ -1,4 +1,4 @@
-# Fundamental concepts in quantitative finance
+# Fundamental concepts in Quantitative Finance
 
 ### Probabilities
     - Random variable
