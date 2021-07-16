@@ -73,6 +73,7 @@ class PriceAboveSMA(Strategy):
             # market entry
             self.buy()
         elif self.position and price < self.sma[-1]:
+            # market exit
             self.position.close()
     
 # =============================================================================
