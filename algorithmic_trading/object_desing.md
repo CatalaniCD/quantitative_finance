@@ -1,6 +1,6 @@
 # Object Oriented Design
 
-![alt text](https://github.com/CatalaniCD/quantitative_finance/edit/main/algorithmic_trading/object_desing.png?raw=true)
+![alt text](https://github.com/CatalaniCD/quantitative_finance/blob/main/algorithmic_trading/object_desing.png?raw=true)
 
 An object contains encapsulated data and procedures grouped together to represent an entity. The 'object interface' defines how the object can be interacted with. An object-oriented program is described by the interaction of these objects. Object-oriented design is the discipline of defining the objects and their interactions to solve a problem that was identified and documented during object-oriented analysis.
 
