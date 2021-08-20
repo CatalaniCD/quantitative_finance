@@ -5,3 +5,6 @@ Algorithmic trading is a method of executing orders using automated pre-programm
 The term algorithmic trading is often used synonymously with automated trading system. These encompass a variety of trading strategies, some of which are based on formulas and results from mathematical finance, and often rely on specialized software.
 
 Source : https://en.m.wikipedia.org/wiki/Algorithmic_trading
+
+### Frameworks:
+[Pine Script](https://github.com/CatalaniCD/quantitative_finance/tree/main/pinescript)
