@@ -1,5 +1,8 @@
 # Quantitative Finance
 
+![alt text](https://github.com/CatalaniCD/quantitative_finance/blob/main/bg.jpg?raw=true)
+
+
 ### [Algorithmic Trading](https://github.com/CatalaniCD/quantitative_finance/tree/main/algorithmic_trading/)
 
 ### Mathematical Finance
