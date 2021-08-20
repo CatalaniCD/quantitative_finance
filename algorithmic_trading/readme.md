@@ -23,6 +23,6 @@ Source : http://www.turingfinance.com/algorithmic-trading-system-architecture-po
 
 ### Frameworks
 
-[Object Design](https://github.com/CatalaniCD/computer_science/blob/main/5.%20software_dev/readme.md)
+[Object Design](https://github.com/CatalaniCD/computer_science/blob/main/5.%20software_dev/object_desing.md)
 
 [Pine Script](https://github.com/CatalaniCD/quantitative_finance/tree/main/pinescript)
