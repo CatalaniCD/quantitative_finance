@@ -2,9 +2,7 @@
 
 ![alt text](https://github.com/CatalaniCD/quantitative_finance/blob/main/bg.png?raw=true)
 
-
 ### [Algorithmic Trading](https://github.com/CatalaniCD/quantitative_finance/tree/main/algorithmic_trading/)
-        [Pine Script](https://github.com/CatalaniCD/quantitative_finance/tree/main/pinescript)
 
 ### [Mathematical Finance](https://github.com/CatalaniCD/quantitative_finance/tree/main/15.455x)
 
