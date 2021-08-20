@@ -1,4 +1,4 @@
-# Pinescipt 
+# Pine Script 
 
 ![alt text](https://github.com/CatalaniCD/quantitative_finance/blob/main/pinescript/pinescript.png?raw=true)
 
