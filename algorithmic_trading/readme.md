@@ -6,5 +6,5 @@ The term algorithmic trading is often used synonymously with automated trading s
 
 Source : https://en.m.wikipedia.org/wiki/Algorithmic_trading
 
-### Frameworks:
+### Frameworks
 [Pine Script](https://github.com/CatalaniCD/quantitative_finance/tree/main/pinescript)
