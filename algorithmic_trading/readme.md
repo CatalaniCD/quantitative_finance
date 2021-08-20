@@ -8,6 +8,6 @@ Source : https://en.m.wikipedia.org/wiki/Algorithmic_trading
 
 ### Frameworks
 
-[Object Design](https://github.com/CatalaniCD/quantitative_finance/blob/main/algorithmic_trading/object_desing.md)
+[Object Design](https://github.com/CatalaniCD/computer_science/blob/main/5.%20software_dev/readme.md)
 
 [Pine Script](https://github.com/CatalaniCD/quantitative_finance/tree/main/pinescript)
