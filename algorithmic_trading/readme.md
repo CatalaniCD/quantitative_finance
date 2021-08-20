@@ -13,8 +13,8 @@ A conceptual view describes high level concepts and mechanisms that exist in the
 
 ##### Event driven architecture
     an architecture which produces, detects, consumes, and reacts to events. 
-    Events include real time market movements, complex events or trends, 
-    and trading events e.g. submitting an order.
+    Events include real time market movements, complex events or trends, and trading events.
+    e.g. submitting an order.
 
 ![alt text](https://github.com/CatalaniCD/quantitative_finance/blob/main/algorithmic_trading/arch_concept.png)
 
