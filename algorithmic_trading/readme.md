@@ -14,6 +14,8 @@ Source : https://en.m.wikipedia.org/wiki/Algorithmic_trading
 
 [Application Programming Interface](https://github.com/CatalaniCD/quantitative_finance/blob/main/algorithmic_trading/api.md)
 
+[Open Banking](https://github.com/CatalaniCD/quantitative_finance/blob/main/algorithmic_trading/open_banking.md)
+
 [Order Book](https://github.com/CatalaniCD/quantitative_finance/blob/main/algorithmic_trading/order_book.md)
 
 ### Frameworks
