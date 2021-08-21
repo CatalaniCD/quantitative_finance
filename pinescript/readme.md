@@ -8,4 +8,6 @@ Pine is cloud-based and therefore different in nature to client-side programming
 
 Source : https://www.tradingview.com/pine-script-docs/en/v4/Introduction.html
 
+### Indicators Sample:
+
 ![alt text](https://github.com/CatalaniCD/quantitative_finance/blob/main/pinescript/pine_indicators.png?raw=true)
