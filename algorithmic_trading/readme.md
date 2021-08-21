@@ -6,23 +6,16 @@ The term algorithmic trading is often used synonymously with automated trading s
 
 Source : https://en.m.wikipedia.org/wiki/Algorithmic_trading
 
-### Algorithmic Trading Systems Architecture
-Conceptual Architecture
-
-A conceptual view describes high level concepts and mechanisms that exist in the system at the highest level of granularity. At this level, the algorithmic trading system follows an event driven architecture (EDA) broken up across four layers, and two architectural aspects. For each layer and aspect reference architectures and patterns are used. Architectural patterns are proven, generic structures for achieving specific requirements. Architectural aspects are cross-cutting concerns which span multiple components.
-
-##### Event driven architecture
-    an architecture which produces, detects, consumes, and reacts to events. 
-    Events include real time market movements, complex events or trends, and trading events.
-    e.g. submitting an order.
-
-![alt text](https://github.com/CatalaniCD/quantitative_finance/blob/main/algorithmic_trading/arch_concept.png)
-
-Source : http://www.turingfinance.com/algorithmic-trading-system-architecture-post/
-
-
-### Frameworks
+### Related Topics:
 
 [Object Design](https://github.com/CatalaniCD/computer_science/blob/main/5.%20software_dev/object_desing.md)
+
+[Systems Architecture](https://github.com/CatalaniCD/quantitative_finance/blob/main/algorithmic_trading/arch.md)
+
+[Application Programming Interface](https://github.com/CatalaniCD/quantitative_finance/blob/main/algorithmic_trading/api.md)
+
+[Order Book](https://github.com/CatalaniCD/quantitative_finance/blob/main/algorithmic_trading/order_book.md)
+
+### Frameworks
 
 [Pine Script](https://github.com/CatalaniCD/quantitative_finance/tree/main/pinescript)
