@@ -10,6 +10,10 @@ Source : https://en.m.wikipedia.org/wiki/Algorithmic_trading
 
 [Object Design](https://github.com/CatalaniCD/computer_science/blob/main/5.%20software_dev/object_desing.md)
 
+[Simulation](https://github.com/CatalaniCD/computer_science/tree/main/4.%20simulation)
+
+[Backtesting](https://github.com/CatalaniCD/quantitative_finance/blob/main/algorithmic_trading/backtesting.md)
+
 [Systems Architecture](https://github.com/CatalaniCD/quantitative_finance/blob/main/algorithmic_trading/arch.md)
 
 [Application Programming Interface](https://github.com/CatalaniCD/quantitative_finance/blob/main/algorithmic_trading/api.md)
