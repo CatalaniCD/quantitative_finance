@@ -7,3 +7,5 @@
 Pine is cloud-based and therefore different in nature to client-side programming languages. While we will not develop Pine into a full-fledged language with high-end coding capabilities for building very complex tools, constantly improving Pine is one of our highest priorities and we are happy to consider any requests for new features."
 
 Source : https://www.tradingview.com/pine-script-docs/en/v4/Introduction.html
+
+![alt text](https://github.com/CatalaniCD/quantitative_finance/blob/main/pinescript/pine_indicators.png?raw=true)
