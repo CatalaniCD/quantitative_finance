@@ -1,5 +1,11 @@
 # Fundamental concepts in Quantitative Finance
 
+## Finance Concepts
+    - Non Arbitrage Principle
+    - Q-measure
+
+## Mathematics Concepts
+
 ### Algebra
     - Vectors 
     - Matrix Operations : Add, Multiply, Transpose, Invert, Determinants
