@@ -2,8 +2,6 @@
 
 ![alt text](https://github.com/CatalaniCD/quantitative_finance/blob/main/bg.png?raw=true)
 
-### [Algorithmic Trading](https://github.com/CatalaniCD/quantitative_finance/tree/main/algorithmic_trading/)
-
 ### [Mathematical Finance](https://github.com/CatalaniCD/quantitative_finance/tree/main/fundamentals)
 
 Mathematical finance, also known as quantitative finance and financial mathematics, is a field of applied mathematics, concerned with mathematical modeling of financial markets. Generally, mathematical finance will derive and extend the mathematical or numerical models without necessarily establishing a link to financial theory, taking observed market prices as input. Mathematical consistency is required, not compatibility with economic theory. Thus, for example, while a financial economist might study the structural reasons why a company may have a certain share price, a financial mathematician may take the share price as a given, and attempt to use stochastic calculus to obtain the corresponding value of derivatives of the stock (see: Valuation of options; Financial modeling; Asset pricing). The fundamental theorem of arbitrage-free pricing is one of the key theorems in mathematical finance, while the Black–Scholes equation and formula are amongst the key results.
@@ -43,5 +41,7 @@ methods of engineering, tools of mathematics and the practice of programming.
 Source : https://en.m.wikipedia.org/wiki/Financial_engineering#/search
 
 ### Topics
+
+[Algorithmic Trading](https://github.com/CatalaniCD/quantitative_finance/tree/main/algorithmic_trading/)
 
 [Financial Time Series](https://github.com/CatalaniCD/quantitative_finance/blob/main/fundamentals/ftseries.md)
