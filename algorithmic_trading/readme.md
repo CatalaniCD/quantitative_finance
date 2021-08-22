@@ -6,7 +6,7 @@ The term algorithmic trading is often used synonymously with automated trading s
 
 Source : https://en.m.wikipedia.org/wiki/Algorithmic_trading
 
-### Related Topics:
+### Topics
 
 [Object Design](https://github.com/CatalaniCD/computer_science/blob/main/5.%20software_dev/object_desing.md)
 
