@@ -4,7 +4,7 @@
 
 ### [Mathematical Finance](https://github.com/CatalaniCD/quantitative_finance/tree/main/fundamentals)
 
-### Computational Finance
+### [Computational Finance](https://github.com/CatalaniCD/quantitative_finance/tree/main/comp_finance.md)
 
 ### Financial Engineering
 Financial engineering is a multidisciplinary field involving financial theory, 
