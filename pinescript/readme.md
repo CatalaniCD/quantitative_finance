@@ -11,7 +11,7 @@ Source : https://www.tradingview.com/pine-script-docs/en/v4/Introduction.html
 ### Apps / Solutions
   
   - Customized Indicators
-  - Customizaed Trading Alerts
+  - Customized Trading Alerts
   - Backtesting Trading Logic
 
 ### Indicators Sample:
