@@ -1,0 +1,28 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © CatalaniCD
+
+//@version=4
+study("Indexing Solution", overlay = false)
+// select assets
+s_1 = input(title = 'Index_1', type = input.symbol, defval = 'BINANCE:ETHUSDT')
+s_2 = input(title = 'Index_2', type = input.symbol, defval = 'BINANCE:BNBUSDT')
+s_3 = input(title = 'Index_3', type = input.symbol, defval = 'BINANCE:ADAUSDT')
+s_4 = input(title = 'Index_4', type = input.symbol, defval = 'BINANCE:BCHUSDT')
+s_5 = input(title = 'Index_5', type = input.symbol, defval = 'BINANCE:BTCUSDT')
+// request price
+asset_0 = security(symbol = syminfo.ticker,  resolution = timeframe.period, expression = close)
+asset_1 = security(symbol = s_1,  resolution = timeframe.period, expression = close)
+asset_2 = security(symbol = s_2,  resolution = timeframe.period, expression = close)
+asset_3 = security(symbol = s_3,  resolution = timeframe.period, expression = close)
+asset_4 = security(symbol = s_4,  resolution = timeframe.period, expression = close)
+asset_5 = security(symbol = s_5,  resolution = timeframe.period, expression = close)
+// create index
+index = change(log(asset_1),1) + change(log(asset_1),2) + change(log(asset_1),3) + change(log(asset_1),4) + change(log(asset_1),5)
+// compute delta
+delta = cum(change(log(asset_0),1)) - (cum(index)/5)
+// compute spread
+spread = delta - wma(delta, 10)
+// zero line
+hline(0.0, color = color.white)
+// plot spread
+plot(spread)
