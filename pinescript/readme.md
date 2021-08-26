@@ -14,7 +14,7 @@ Source : https://www.tradingview.com/pine-script-docs/en/v4/Introduction.html
   - Customized Trading Alerts
   - Backtesting Trading Logic
 
-### Index Indicator :
+### Indexing Solution
 
     // This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
     // © CatalaniCD
