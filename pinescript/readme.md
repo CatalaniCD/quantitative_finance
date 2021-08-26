@@ -35,7 +35,7 @@ Source : https://www.tradingview.com/pine-script-docs/en/v4/Introduction.html
     asset_4 = security(symbol = s_4,  resolution = timeframe.period, expression = close)
     asset_5 = security(symbol = s_5,  resolution = timeframe.period, expression = close)
     // create index
-    index = change(log(asset_1),1) + change(log(asset_1),2) + change(log(asset_1),3) + change(log(asset_1),4) + change(log(asset_1),5)
+    index = change(log(asset_1),1) + change(log(asset_2),1) + change(log(asset_3),1) + change(log(asset_4),1) + change(log(asset_5),1)
     // compute delta
     delta = cum(change(log(asset_0),1)) - (cum(index)/5)
     // compute spread
