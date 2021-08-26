@@ -59,3 +59,5 @@ Source : https://www.tradingview.com/pine-script-docs/en/v4/Introduction.html
 ### Indicators Sample:
 
 ![alt text](https://github.com/CatalaniCD/quantitative_finance/blob/main/pinescript/pine_indicators.png?raw=true)
+
+#### [Certification 1](https://www.udemy.com/certificate/UC-86e2dd1b-e579-452a-bb11-dbe75b537dc5/)
