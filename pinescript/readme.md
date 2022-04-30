@@ -62,4 +62,4 @@ Source : https://www.tradingview.com/pine-script-docs/en/v4/Introduction.html
 
 #### [Trading View Profile](https://www.tradingview.com/u/CatalaniCD/)
 #### [Certification : Pine Script Programming ](https://www.udemy.com/certificate/UC-86e2dd1b-e579-452a-bb11-dbe75b537dc5/)
-
+#### [Certification : Pine Script Strategies ](https://www.udemy.com/certificate/UC-66b132ae-476a-4a2a-8aa5-381d6ebf62d2/)
