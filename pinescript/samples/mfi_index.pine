@@ -1,0 +1,36 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © CatalaniCD
+
+//@version=4
+study("MFI Index", overlay = false)
+// select assets
+period = input(title = 'MFI Period', type = input.integer, defval = 10, minval = 2)
+s_1 = input(title = 'Index_1', type = input.symbol, defval = 'BINANCE:ETHUSDT')
+s_2 = input(title = 'Index_2', type = input.symbol, defval = 'BINANCE:BNBUSDT')
+s_3 = input(title = 'Index_3', type = input.symbol, defval = 'BINANCE:ADAUSDT')
+s_4 = input(title = 'Index_4', type = input.symbol, defval = 'BINANCE:BCHUSDT')
+s_5 = input(title = 'Index_5', type = input.symbol, defval = 'BINANCE:BTCUSDT')
+// request price
+asset_0 = security(symbol = syminfo.ticker,  resolution = timeframe.period, expression = close)
+asset_1 = security(symbol = s_1,  resolution = timeframe.period, expression = close)
+asset_2 = security(symbol = s_2,  resolution = timeframe.period, expression = close)
+asset_3 = security(symbol = s_3,  resolution = timeframe.period, expression = close)
+asset_4 = security(symbol = s_4,  resolution = timeframe.period, expression = close)
+asset_5 = security(symbol = s_5,  resolution = timeframe.period, expression = close)
+// create index
+index = mfi(asset_1, period) + mfi(asset_2, period) + mfi(asset_3, period) + mfi(asset_4, period) + mfi(asset_5, period)
+// compute delta
+rsi_asset = mfi(asset_0, period)
+rsi_index = (index/5)
+delta = (rsi_asset - rsi_index) + 50
+// top-bottom lines
+hline(0.0, color = color.white)
+hline(100.0, color = color.white)
+// interest levels
+hline(20, color = color.white)
+hline(80.0, color = color.white)
+// plot rsi comparisson
+plot(rsi_asset, color = color.red, linewidth = 1, title = "Asset")
+plot(rsi_index, color = color.white, linewidth = 1, title = "Index")
+// plot spread histogram
+plot(delta, color = color.blue, style = plot.style_columns, histbase = 50, title = "Delta")

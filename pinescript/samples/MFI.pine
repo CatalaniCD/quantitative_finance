@@ -1,0 +1,242 @@
+// Licensed under the GPLv3 license. The license can be found at https://www.gnu.org/licenses/gpl-3.0.en.html
+// © AlgoStorm.com
+
+//@version=4
+
+study(title="AlgoStorm.com - Money Flow Index (MFI)", shorttitle="AS_MFI", format=format.price, precision=2, resolution="")
+
+// ---------------------------
+// Input Values
+// ---------------------------
+
+mfi_len         = input(title="MFI - Period",                type=input.integer, defval=14, minval=1, maxval=244,    group="MFI Main Settings")
+mfi_src         = input(title="MFI - Source",                type=input.source,  defval=hlc3,                        group="MFI Main Settings")
+
+bb_length       = input(title="MFI BB - Length",             type=input.integer, defval=40,  minval=5,   maxval=244, group="MFI BB Settings")
+bb_deviation    = input(title="MFI BB - Deviation",          type=input.float,   defval=2.0, minval=1.0, maxval=5.0, group="MFI BB Settings")
+
+plotBull        = input(title="MFI - Plot Bullish",          type=input.bool,    defval=true,                        group="MFI Divergences Settings")
+plotHiddenBull  = input(title="MFI - Plot Hidden Bullish",   type=input.bool,    defval=true,                        group="MFI Divergences Settings")
+plotBear        = input(title="MFI - Plot Bearish",          type=input.bool,    defval=true,                        group="MFI Divergences Settings")
+plotHiddenBear  = input(title="MFI - Plot Hidden Bearish",   type=input.bool,    defval=true,                        group="MFI Divergences Settings")
+
+lbR             = input(title="MFI - Pivot Lookback Right",  type=input.integer, defval=2,   minval=1,   maxval=244, group="MFI Lookback Settings")
+lbL             = input(title="MFI - Pivot Lookback Left",   type=input.integer, defval=5,   minval=1,   maxval=244, group="MFI Lookback Settings")
+rangeUpper      = input(title="MFI - Max of Lookback Range", type=input.integer, defval=60,  minval=1,   maxval=244, group="MFI Lookback Settings")
+rangeLower      = input(title="MFI - Min of Lookback Range", type=input.integer, defval=5,   minval=1,   maxval=244, group="MFI Lookback Settings")
+
+// ---------------------------
+// Functions
+// ---------------------------
+
+// Raw Money Flow Assignment
+rawMoneyFlow = mfi_src * volume
+
+// Positive Money Flow Function
+positiveMoneyFlow() =>
+    a = 0.0
+    a := hlc3 > hlc3[1] ? a + rawMoneyFlow : a
+
+// Negative Money Flow Function
+negativeMoneyFlow() =>
+    b = 0.0
+    b := hlc3 < hlc3[1] ? b + rawMoneyFlow : b
+
+// Money Flow Function
+moneyflow(period) =>
+    moneyFlowRatio = sma(positiveMoneyFlow(), period) / sma(negativeMoneyFlow(), period)
+    moneyFlowIndex = security(syminfo.tickerid, timeframe.period, 100 - 100 / (1 + moneyFlowRatio))
+
+// MFI & MFI BB Source Assignment
+mfi_osc = moneyflow(mfi_len)
+bb_src  = mfi_osc
+
+// BB Function
+computeBB(bb_src, bb_length, bb_deviation) =>
+    _basis  = sma(bb_src, bb_length)
+    _dev    = bb_deviation * stdev(bb_src, bb_length)
+    _upper0 = _basis + _dev
+    _upper  = _upper0 <= 100 ? _upper0 : 100
+    _lower0 = _basis - _dev
+    _lower  = _lower0 >= 0 ? _lower0 : 0
+    [_basis, _dev, _upper, _lower]
+
+// ---------------------------
+// Calcuations
+// ---------------------------
+
+// For MFI
+mfi_color = mfi_osc > 80 or mfi_osc < 20 ? #f4d03f : #bbdefb
+
+// For MFI Divergences
+plFound = na(pivotlow(mfi_osc, lbL, lbR))  ? false : true
+phFound = na(pivothigh(mfi_osc, lbL, lbR)) ? false : true
+
+_inRange(cond) =>
+    bars = barssince(cond == true)
+    rangeLower <= bars and bars <= rangeUpper
+
+// Call BB Function
+[bb_basis, bb_dev, bb_upper, bb_lower] = computeBB(bb_src, bb_length, bb_deviation)
+
+// Colors
+bullColor       = color.new(#64b5f6, 0)
+bearColor       = color.new(#9575cd, 0)
+hiddenBullColor = color.new(#64b5f6, 0)
+hiddenBearColor = color.new(#9575cd, 0)
+textColor       = color.new(#000000, 0)
+noneColor       = color.new(#ffffff, 100)
+
+// ---------------------------
+// Output
+// ---------------------------
+
+// BB Output
+bb_upper_line = plot(bb_upper, title="BB - Upper", color=color.new(#bbdefb, 40), linewidth=2, display=display.all)
+bb_basis_line = plot(bb_basis, title="BB - Basis", color=color.new(#c27ba0, 0),  linewidth=2, display=display.all)
+bb_lower_line = plot(bb_lower, title="BB - Lower", color=color.new(#bbdefb, 40), linewidth=2, display=display.all)
+
+fill(bb_lower_line, bb_upper_line, title="BB - Fill Color", color=color.new(#2761b3, 97))
+
+// MFI Output
+mfi_plot = plot(mfi_osc, title="Money Flow Index", linewidth=2, color=mfi_color)
+
+topLevel  = hline(100, title="Top Level",        linestyle=hline.style_dotted, color=color.new(#bbdefb, 90))
+obLevel   = hline(80,  title="Overbought Level", linestyle=hline.style_dotted, color=color.new(#bbdefb, 90))
+midLevel  = hline(50,  title="50 Line",          linestyle=hline.style_dotted, color=color.new(#bbdefb, 90))
+osLevel   = hline(20,  title="Oversold Level",   linestyle=hline.style_dotted, color=color.new(#bbdefb, 90))
+zeroLevel = hline(0,   title="Zero Level",       linestyle=hline.style_dotted, color=color.new(#bbdefb, 90))
+
+fill(topLevel,  obLevel, title="Overbought Level - Background", color=color.new(#bbdefb, 90))
+fill(zeroLevel, osLevel, title="Oversold Level - Background",   color=color.new(#bbdefb, 90))
+
+// ----------------------------------
+// Regular Bullish
+// ----------------------------------
+
+// Osc: Higher Low
+oscHL = mfi_osc[lbR] > valuewhen(plFound, mfi_osc[lbR], 1) and _inRange(plFound[1])
+
+// Price: Lower Low
+priceLL  = low[lbR] < valuewhen(plFound, low[lbR], 1)
+bullCond = plotBull and priceLL and oscHL and plFound
+
+plot(
+     plFound ? mfi_osc[lbR] : na,
+     offset=-lbR,
+     title="Regular Bullish",
+     linewidth=2,
+     color=(bullCond ? bullColor : noneColor)
+     )
+
+plotshape(
+     bullCond ? mfi_osc[lbR] : na,
+     offset=-lbR,
+     title="Regular Bullish Label",
+     text=" P ",
+     style=shape.labelup,
+     location=location.absolute,
+     color=bullColor,
+     textcolor=textColor
+     )
+
+alertcondition(bullCond, title="Regular bullish divergence in MFI found", message="Check charts for a regular bullish divergence found with MFI")
+
+// ----------------------------------
+// Hidden Bullish Divergences
+// ----------------------------------
+
+// Osc: Lower Low
+oscLL = mfi_osc[lbR] < valuewhen(plFound, mfi_osc[lbR], 1) and _inRange(plFound[1])
+
+// Price: Higher Low
+priceHL = low[lbR] > valuewhen(plFound, low[lbR], 1)
+
+hiddenBullCond = plotHiddenBull and priceHL and oscLL and plFound
+
+plot(
+     plFound ? mfi_osc[lbR] : na,
+     offset=-lbR,
+     title="Hidden Bullish",
+     linewidth=2,
+     color=(hiddenBullCond ? hiddenBullColor : noneColor)
+     )
+
+plotshape(
+     hiddenBullCond ? mfi_osc[lbR] : na,
+     offset=-lbR,
+     title="Hidden Bullish Label",
+     text=" H-P ",
+     style=shape.labelup,
+     location=location.absolute,
+     color=bullColor,
+     textcolor=textColor
+     )
+
+alertcondition(hiddenBullCond, title="Hidden bullish divergence in MFI found", message="Check charts for a hidden bullish divergence found with MFI")
+
+// ----------------------------------
+// Regular Bearish Divergences
+// ----------------------------------
+
+// Osc: Lower High
+oscLH = mfi_osc[lbR] < valuewhen(phFound, mfi_osc[lbR], 1) and _inRange(phFound[1])
+
+// Price: Higher High
+priceHH = high[lbR] > valuewhen(phFound, high[lbR], 1)
+
+bearCond = plotBear and priceHH and oscLH and phFound
+
+plot(
+     phFound ? mfi_osc[lbR] : na,
+     offset=-lbR,
+     title="Regular Bearish",
+     linewidth=2,
+     color=(bearCond ? bearColor : noneColor)
+     )
+
+plotshape(
+     bearCond ? mfi_osc[lbR] : na,
+     offset=-lbR,
+     title="Regular Bearish Label",
+     text=" N ",
+     style=shape.labeldown,
+     location=location.absolute,
+     color=bearColor,
+     textcolor=textColor
+     )
+
+alertcondition(bearCond, title="Regular bearish divergence in MFI found", message="Check charts for a regular bearish divergence found with MFI")
+
+// ----------------------------------
+// Hidden Bearish Divergences
+// ----------------------------------
+
+// Osc: Higher High
+oscHH = mfi_osc[lbR] > valuewhen(phFound, mfi_osc[lbR], 1) and _inRange(phFound[1])
+
+// Price: Lower High
+priceLH = high[lbR] < valuewhen(phFound, high[lbR], 1)
+
+hiddenBearCond = plotHiddenBear and priceLH and oscHH and phFound
+
+plot(
+     phFound ? mfi_osc[lbR] : na,
+     offset=-lbR,
+     title="Hidden Bearish",
+     linewidth=2,
+     color=(hiddenBearCond ? hiddenBearColor : noneColor)
+     )
+
+plotshape(
+     hiddenBearCond ? mfi_osc[lbR] : na,
+     offset=-lbR,
+     title="Hidden Bearish Label",
+     text=" H-N ",
+     style=shape.labeldown,
+     location=location.absolute,
+     color=bearColor,
+     textcolor=textColor
+     )
+
+alertcondition(hiddenBearCond, title="Hidden bearish divergence in MFI has been found.", message="Check charts for a hidden bearish divergence found with MFI")

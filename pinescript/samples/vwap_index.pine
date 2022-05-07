@@ -1,0 +1,44 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © CatalaniCD
+
+//@version=4
+study("VWAP Indexing Standarized", overlay = false)
+// select assets
+period = input(title = 'Standarization Period', type = input.integer, defval = 100)
+s_1 = input(title = 'Index_1', type = input.symbol, defval = 'BINANCE:ETHUSDT')
+s_2 = input(title = 'Index_2', type = input.symbol, defval = 'BINANCE:BNBUSDT')
+s_3 = input(title = 'Index_3', type = input.symbol, defval = 'BINANCE:ADAUSDT')
+s_4 = input(title = 'Index_4', type = input.symbol, defval = 'BINANCE:BCHUSDT')
+s_5 = input(title = 'Index_5', type = input.symbol, defval = 'BINANCE:BTCUSDT')
+// request price
+asset_0 = security(symbol = syminfo.ticker,  resolution = timeframe.period, expression = close)
+asset_1 = security(symbol = s_1,  resolution = timeframe.period, expression = close)
+asset_2 = security(symbol = s_2,  resolution = timeframe.period, expression = close)
+asset_3 = security(symbol = s_3,  resolution = timeframe.period, expression = close)
+asset_4 = security(symbol = s_4,  resolution = timeframe.period, expression = close)
+asset_5 = security(symbol = s_5,  resolution = timeframe.period, expression = close)
+// declare vwapcumlogreturns
+vwapcumlog(arg1) =>
+    cum = cum(change(log(vwap(arg1)),1))
+// comput index
+index = vwapcumlog(asset_1) + vwapcumlog(asset_2) + vwapcumlog(asset_3) + vwapcumlog(asset_4) + vwapcumlog(asset_5) 
+delta = vwapcumlog(asset_0)  - (index/5)
+plot(delta)
+// compute spread
+spread = delta - wma(delta, 10)
+// standarizarion / z_score
+mean = sma(spread, period)
+std = stdev(spread, period)
+z_score = (spread - mean) / std
+// standard lines
+hline(0.0, color = color.white)
+hline(2.0, color = color.white)
+hline(-2.0, color = color.white)
+// bar_color
+color_ = color.white
+if close > sma(close, 9)
+    color_ := color.green
+else
+    color_ := color.red
+// plot spread
+plot(z_score, color = color_, style = plot.style_columns, histbase = 0, title = "Spread z_score")
